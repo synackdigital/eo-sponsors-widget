@@ -1,9 +1,15 @@
-<?php if ( is_plugin_active('event-organiser/event-organiser.php') ) :
-  $events = eo_get_events();
+<?php
+// Check if EO plugin is active
+if ( is_plugin_active('event-organiser/event-organiser.php') ) :
 
+  // Check if we have events
+  $events = eo_get_events();
   if($events):
-    echo '<label for="eosw-eventid">Associate sponsors to event</label>';
-    echo '<select id="eosw-eventid">';
+
+    // Events
+    echo '<p>';
+    echo '<label for="eosw-eventid">' . __('Associate to event', 'eosw') . '</label>';
+    echo '<select class="widefat" id="eosw-eventid">';
     echo '<option value="-1">All</option>';
     foreach ($events as $event):
 
@@ -17,8 +23,19 @@
       );
     endforeach;
     echo '</select>';
+    echo '</p>';
+
+    // Sponsors HTML
+    // TODO: Real add/remove
+    echo '<p>';
+    echo '<label for="eosw-html">' . __('HTML content', 'eosw') . '</label>';
+    echo '<textarea class="widefat" rows="16" cols="20" id="eosw-html"></textarea>';
+    echo '</p>';
+
   endif;
-else:
-  // Close the widget if the EO plugin is not active
+
+// Close the widget if the EO plugin is not active
+else :
   echo 'This widget requires that you activate the <a href="http://wp-event-organiser.com/" target="_blank">Event Organiser plugin</a>.';
-endif; ?>
+endif;
+?>
