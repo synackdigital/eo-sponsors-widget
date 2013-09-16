@@ -8,7 +8,7 @@ if ( is_plugin_active('event-organiser/event-organiser.php') ) :
 
     // Events
     echo '<p>';
-    echo '<label for="eosw-eventid">' . __('Associate to event', 'eosw') . '</label>';
+    echo '<label for="eosw-eventid">' . __('Associate with event', 'eosw') . '</label>';
     echo '<select class="widefat" id="eosw-eventid">';
     echo '<option value="-1">All</option>';
     foreach ($events as $event):
