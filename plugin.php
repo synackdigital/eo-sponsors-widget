@@ -84,6 +84,9 @@ class SWDC_Event_Sponsors_Widget extends WP_Widget {
 
 		// TODO:	Here is where you manipulate your widget's values based on their input fields
 
+		$eventid = $instance['eventid'];
+		$html = $instance['html'];
+
 		include( plugin_dir_path( __FILE__ ) . '/views/widget.php' );
 
 		echo $after_widget;
