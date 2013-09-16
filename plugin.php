@@ -6,7 +6,7 @@ Version: 1.0
 Author: Fredrik Broman
 Author URI: http://synack.se
 Author Email: fredrik@synack.se
-Text Domain: swdc-event-sponsors-widget
+Text Domain: eosw
 Domain Path: /lang/
 Network: false
 License: GPLv2 or later
@@ -49,10 +49,10 @@ class SWDC_Event_Sponsors_Widget extends WP_Widget {
 
 		parent::__construct(
 			'swdc-event-sponsors-widget',
-			__( 'SWDC Event Sponsors Widget', 'swdc-event-sponsors-widget' ),
+			__( 'SWDC Event Sponsors Widget', 'eosw' ),
 			array(
 				'classname'		=>	'swdc-event-sponsors-widget',
-				'description'	=>	__( 'Extends the Event Organiser plugin with a sponsor widget', 'swdc-event-sponsors-widget' )
+				'description'	=>	__( 'Extends the Event Organiser plugin with a sponsor widget', 'eosw' )
 			)
 		);
 
@@ -134,7 +134,7 @@ class SWDC_Event_Sponsors_Widget extends WP_Widget {
 	 */
 	public function widget_textdomain() {
 
-		load_plugin_textdomain( 'swdc-event-sponsors-widget', false, plugin_dir_path( __FILE__ ) . '/lang/' );
+		load_plugin_textdomain( 'eosw', false, plugin_dir_path( __FILE__ ) . '/lang/' );
 
 	} // end widget_textdomain
 

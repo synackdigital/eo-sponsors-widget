@@ -11,14 +11,14 @@
       $format = ( eo_is_all_day($event->ID) ? get_option('date_format') : get_option('date_format').' '.get_option('time_format') );
 
       printf(
-             '<option value="%s">%s</option>',
-             $event->ID,
-             get_the_title($event->ID)
-          );
+        '<option value="%s">%s</option>',
+        $event->ID,
+        get_the_title($event->ID)
+      );
     endforeach;
     echo '</select>';
   endif;
 else:
+  // Close the widget if the EO plugin is not active
   echo 'This widget requires that you activate the <a href="http://wp-event-organiser.com/" target="_blank">Event Organiser plugin</a>.';
-endif;
-?>
+endif; ?>
