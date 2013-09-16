@@ -8,17 +8,21 @@ if ( is_plugin_active('event-organiser/event-organiser.php') ) :
 
     // Events
     echo '<p>';
-    echo '<label for="eosw-eventid">' . __('Associate with event', 'eosw') . '</label>';
-    echo '<select class="widefat" id="eosw-eventid">';
+    echo '<label for="' . $this->get_field_id( 'eventid' ) . '">' . __('Associate with event', 'eosw') . '</label>';
+    echo '<select class="widefat" id="' . $this->get_field_id( 'eventid' ) . '" name="' . $this->get_field_name( 'eventid' ) . '">';
     echo '<option value="-1">All</option>';
     foreach ($events as $event):
 
-      //Check if all day, set format accordingly
+      // Check if all day, set format accordingly
       $format = ( eo_is_all_day($event->ID) ? get_option('date_format') : get_option('date_format').' '.get_option('time_format') );
 
+      // Check if current event is selected
+      $selected = ($event->ID == $eventid) ? 'selected' : '';
+
       printf(
-        '<option value="%s">%s</option>',
+        '<option value="%s" %s>%s</option>',
         $event->ID,
+        $selected,
         get_the_title($event->ID)
       );
     endforeach;
@@ -28,8 +32,8 @@ if ( is_plugin_active('event-organiser/event-organiser.php') ) :
     // Sponsors HTML
     // TODO: Real add/remove
     echo '<p>';
-    echo '<label for="eosw-html">' . __('HTML content', 'eosw') . '</label>';
-    echo '<textarea class="widefat" rows="16" cols="20" id="eosw-html"></textarea>';
+    echo '<label for="' . $this->get_field_id( 'html' ) . '">' . __('HTML content', 'eosw') . '</label>';
+    echo '<textarea class="widefat" rows="16" cols="20" id="' . $this->get_field_id( 'html' ) . '" name="' . $this->get_field_name( 'html' ) . '">' . $html . '</textarea>';
     echo '</p>';
 
   endif;

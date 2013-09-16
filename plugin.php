@@ -93,14 +93,15 @@ class SWDC_Event_Sponsors_Widget extends WP_Widget {
 	/**
 	 * Processes the widget's options to be saved.
 	 *
-	 * @param	array	new_instance	The previous instance of values before the update.
-	 * @param	array	old_instance	The new instance of values to be generated via the update.
+	 * @param array $new_instance Values just sent to be saved.
+	 * @param array $old_instance Previously saved values from database.
 	 */
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = $old_instance;
 
-		// TODO:	Here is where you update your widget's old values with the new, incoming values
+		$instance['eventid'] = ( !empty( $new_instance['eventid'] ) ) ? strip_tags( $new_instance['eventid'] ) : '';
+		$instance['html'] = ( !empty( $new_instance['html'] ) ) ? wpautop( $new_instance['html'] ) : '';
 
 		return $instance;
 
@@ -113,12 +114,12 @@ class SWDC_Event_Sponsors_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-    	// TODO:	Define default values for your variables
 		$instance = wp_parse_args(
 			(array) $instance
 		);
 
-		// TODO:	Store the values of the widget in their own variable
+		$eventid = isset($instance['eventid']) ? $instance['eventid'] : '-1';
+		$html = isset($instance['html']) ? $instance['html'] : '';
 
 		// Display the admin form
 		include( plugin_dir_path(__FILE__) . '/views/admin.php' );
