@@ -104,7 +104,7 @@ class SWDC_Event_Sponsors_Widget extends WP_Widget {
 		$instance = $old_instance;
 
 		$instance['eventid'] = ( !empty( $new_instance['eventid'] ) ) ? strip_tags( $new_instance['eventid'] ) : '';
-		$instance['html'] = ( !empty( $new_instance['html'] ) ) ? wpautop( $new_instance['html'] ) : '';
+		$instance['html'] = ( !empty( $new_instance['html'] ) ) ? $new_instance['html'] : '';
 
 		return $instance;
 
